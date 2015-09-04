@@ -35,6 +35,15 @@ int main()
 				tok=strtok(NULL," ");
 			}
 			temp[i]=NULL;
+			if(!strcmp(temp[0],"cd")) //If 'cd' command ; checking here otherwise it will change the directory of child process,which is not what we want
+			{
+				int gg=chdir(temp[1]);
+				if(gg)
+				{
+					printf("Cannot access folder : %s\n",temp[1]); //Access right/Invalid folder problem
+				}
+				continue;
+			}
 			int t=fork();
 			if(t<0)
 			{
@@ -50,18 +59,7 @@ int main()
 				tt=execvp(temp[0],temp); //Execute command
 				if(tt) //execvp() returns vale in case of failure
 				{
-					if(!strcmp(temp[0],"cd")) //If 'cd' command
-					{
-						int gg=chdir(temp[1]);
-						if(gg)
-						{
-							printf("Cannot access folder : %s\n",temp[1]); //Access right/Invalid folder problem
-						}
-					}
-					else
-					{
-						printf("Sorry, invalid command\n"); //If not in-built
-					}
+					printf("Sorry, invalid command\n"); //If not in-built
 					break; //Read next command
 				}
 			}

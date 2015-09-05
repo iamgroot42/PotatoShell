@@ -42,11 +42,14 @@ int main()
 			}
 			if(!strcmp(temp[0],"cd")) //If 'cd' command ; checking here otherwise it will change the directory of child process,which is not what we want
 			{
-				char* yolo=getlogin();
-				char *d;
-				d=strdup("/home/");
-				strcat(d,yolo);
-				if(temp[1]==NULL) temp[1]=strdup(d); //To handle the case ehwn only 'cd', which should take to user
+				if(temp[1]==NULL || (!strcmp(temp[1],"~")))
+				{
+					char* yolo=getlogin();
+					char *d;
+					d=strdup("/home/");
+					strcat(d,yolo);
+					temp[1]=strdup(d); //To handle the case ehwn only 'cd' or 'cd ~', which should take to user
+				}
 				int gg=chdir(temp[1]);
 				if(gg)
 				{

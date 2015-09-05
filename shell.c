@@ -35,11 +35,6 @@ int main()
 				tok=strtok(NULL," ");
 			}
 			temp[i]=NULL;
-			if(!strcmp(temp[0],"whoami"))
-			{
-				printf("%s\n",getlogin());
-				continue;
-			}
 			if(!strcmp(temp[0],"cd")) //If 'cd' command ; checking here otherwise it will change the directory of child process,which is not what we want
 			{
 				if(temp[1]==NULL || (!strcmp(temp[1],"~")))
@@ -55,11 +50,6 @@ int main()
 				{
 					printf("Cannot access folder : %s\n",temp[1]); //Access right/Invalid folder problem
 				}
-				continue;
-			}
-			if(!strcmp(temp[0],"pwd")) //If 'pwd' command ; checking here otherwise it will change the directory of child process,which is not what we want
-			{
-				printf("%s\n",getcwd(NULL,0));
 				continue;
 			}	
 			int t=fork();

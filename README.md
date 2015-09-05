@@ -6,3 +6,4 @@ Supports:
 - Ctrl+C interrupt
 - cd command
 - 'exit' to exit gracefully from the shell.
+- 'history' (volatile)

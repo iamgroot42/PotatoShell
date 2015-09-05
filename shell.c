@@ -10,10 +10,54 @@ char LEL[100000]; //Maximum length of a word assumed to be 1e5
 char* temp[100]; //Maximum number of arguments 
 char* tok; //Tokenization 
 int i; //Temporary counter
+char* cirq[100]; //For 'history'
+int front=0,rear=-1; //For circular queue
 
 void ctrlC(int signum) //To handle Ctrl+C elegantly 
 {
 	kill(getpid(),0);
+}
+
+void insert(char* x)
+{
+    if((front==0&&rear==99)||(front>0&&rear==front-1))
+        return;
+    else
+    {
+        if(rear==99&&front>0)
+        {
+            rear=0;
+            cirq[rear]=strdup(x);
+        }
+        else
+        {
+            if((front==0&&rear==-1)||(rear!=front-1))
+                cirq[++rear]=strdup(x);
+        }
+    }
+}
+
+void display()
+{
+    int I,J;
+    if(front==0&&rear==-1)
+    {
+        return ;
+    }
+    if(front>rear)
+    {
+        for(I=0;I<=rear;I++)
+            printf("%s\n",cirq[I]);
+        for(J=front;J<=99;J++)
+            printf("%s\n",cirq[J]);
+    }
+    else
+    {
+        for(I=front;I<=rear;I++)
+        {
+            printf("%s\n",cirq[I]);
+        }
+    }
 }
 
 int main()
@@ -26,6 +70,7 @@ int main()
 			fgets(LEL,100000,stdin); //Read input
 			i=0;
 			LEL[strlen(LEL)-1]='\0'; //Replace newline with \0
+			insert(LEL); //Insert to history
 			tok=strtok(LEL," "); //Break by space
 			if(tok==NULL) continue; //If blank,ignore (to avoid segmentation fault)
 			if(!strcmp("exit",strdup(tok))) break; //exit 
@@ -35,6 +80,11 @@ int main()
 				tok=strtok(NULL," ");
 			}
 			temp[i]=NULL;
+			if(!strcmp(temp[0],"history")) //'history' command
+			{
+				display();
+				continue;
+			}
 			if(!strcmp(temp[0],"cd")) //If 'cd' command ; checking here otherwise it will change the directory of child process,which is not what we want
 			{
 				if((temp[1]==NULL) || (temp[1][0]=='~'))

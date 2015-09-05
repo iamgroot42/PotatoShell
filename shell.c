@@ -10,8 +10,8 @@ char LEL[100000]; //Maximum length of a word assumed to be 1e5
 char* temp[100]; //Maximum number of arguments 
 char* tok; //Tokenization 
 int i; //Temporary counter
-char* cirq[100]; //For 'history'
-int front=0,rear=-1; //For circular queue
+static char* cirq[100]; //For 'history'
+static int front=0,rear=-1; //For circular queue
 
 void ctrlC(int signum) //To handle Ctrl+C elegantly 
 {

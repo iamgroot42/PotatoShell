@@ -3,6 +3,7 @@ Custom Shell (made as part of OS assignment).
 
 Supports:
 - file I/O redirection ('<' , '>')
+- help command : lists all functionalities implemented apart from /bin executables
 - executables from /bin folder
 - Ctrl+C interrupt
 - cd command

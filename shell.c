@@ -44,22 +44,24 @@ void insert(char* x) //Insert() function for cirxular queue()
 void display() //Display() function for circular queue
 {
     int I,J;
+    int iterator;
+    iterator=1;
     if(front==0&&rear==-1)
     {
         return ;
     }
     if(front>rear)
     {
-        for(I=0;I<=rear;I++)
-            printf("%s\n",cirq[I]);
-        for(J=front;J<=299;J++)
-            printf("%s\n",cirq[J]);
+        for(I=0;I<=rear;I++,iterator++)
+            printf(" %d %s\n",iterator,cirq[I]);
+        for(J=front;J<=299;J++,iterator++)
+            printf(" %d %s\n",iterator,cirq[J]);
     }
     else
     {
-        for(I=front;I<=rear;I++)
+        for(I=front;I<=rear;I++,iterator++)
         {
-            printf("%s\n",cirq[I]);
+            printf(" %d %s\n",iterator,cirq[I]);
         }
     }
 }
@@ -86,9 +88,9 @@ int main()
 		fgets(LEL,100000,stdin); //Read input
 		i=0;
 		LEL[strlen(LEL)-1]='\0'; //Replace newline with \0
-		insert(LEL); //Insert to history
 		tok=strtok(LEL," "); //Break by space
 		if(tok==NULL) continue; //If blank,ignore (to avoid segmentation fault)
+		insert(LEL); //Insert to history, add only non=empty commands
 		if(!strcmp("exit",strdup(tok))) break; //exit 
 		while(tok!=NULL) 
 		{

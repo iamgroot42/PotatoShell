@@ -53,15 +53,15 @@ void display() //Display() function for circular queue
     if(front>rear)
     {
         for(I=0;I<=rear;I++,iterator++)
-            printf(" %d %s\n",iterator,cirq[I]);
+            printf(" [%d] %s\n",iterator,cirq[I]);
         for(J=front;J<=299;J++,iterator++)
-            printf(" %d %s\n",iterator,cirq[J]);
+            printf(" [%d] %s\n",iterator,cirq[J]);
     }
     else
     {
         for(I=front;I<=rear;I++,iterator++)
         {
-            printf(" %d %s\n",iterator,cirq[I]);
+            printf(" [%d] %s\n",iterator,cirq[I]);
         }
     }
 }

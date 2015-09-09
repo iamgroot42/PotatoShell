@@ -10,7 +10,3 @@ Supports:
 - 'exit' to exit gracefully from the shell.
 - 'history' (volatile)
 - single level pipelining (without any file I/O redirection in between or any 'cd') 
-
-Licensed under WTFPL
-http://www.wtfpl.net/
-2015 (C) Anshuman Suri

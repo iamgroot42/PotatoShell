@@ -17,7 +17,7 @@ int i; //Temporary counter
 static char* cirq[300]; //For 'history'
 static int front=0,rear=-1; //For circular queue
 
-void ctrlC(int signum) //To handle Ctrl+C elegantly 
+void ctrlC(int signum) //To handle Ctrl+C "elegantly" 
 {
 	kill(getpid(),0);
 }

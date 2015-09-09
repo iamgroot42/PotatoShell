@@ -103,10 +103,10 @@ int main()
 			if((temp[1]==NULL) || (temp[1][0]=='~'))
 			{
 				char* yolo=getlogin();
-				char *d;
-				d=strdup("/home/");
+				char *d=strdup("/home/");
 				strcat(d,yolo);
-				char* cooking=temp[1]+1;
+				char *cooking=(char*)malloc(sizeof(cooking)*strlen(temp[1]));
+				strncpy(cooking,temp[1]+1,strlen(temp[1])-1);
 				strcat(d,cooking);
 				temp[1]=strdup(d); //To handle the case when only 'cd' or 'cd ~', which should take to /home/user
 			}

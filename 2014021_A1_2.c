@@ -79,6 +79,7 @@ void help() //Lists all custom commands
 	printf(" | : single level pipe-lining (without any file I/O redirection,cd in between\n");
 }
 
+//This function raken from Internet (with modifications)
 void loop_pipe(char *a,char* b) 
 {
   int   p[2];

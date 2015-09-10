@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 int main()
 {
 	system("gcc 2014021_A1_2.c -o potato");

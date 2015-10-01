@@ -19,10 +19,10 @@ static int front=0,rear=-1; //For circular queue
 
 void ctrlC(int signum) //To handle Ctrl+C "elegantly" 
 {
-	kill(getpid(),0);
+	kill(getpid(),0); 
 }
 
-void insert(char* x) //Insert() function for cirxular queue()
+void insert(char* x) //Insert() function for cirxular queue() 
 {
     if((front==0&&rear==299)||(front>0&&rear==front-1))
         return;
@@ -159,7 +159,7 @@ int main()
 		if(strstr(LEL,"|")!=NULL)
 		{
 			char *x,*y;
-			insert(LEL); //Insert to history, add only non=empty commands
+			insert(LEL); //Insert to history, add only non-empty commands
 			tok=strtok(LEL,"|");
 			x=strdup(tok);
 			tok=strtok(NULL,"|");
@@ -168,7 +168,7 @@ int main()
 				printf("Second argument of pipe missing.\n");
 				continue;
 			}
-			y=strdup(tok);
+			y=strdup(tok); 
 			// printf("Passing2 %s\n",y);
 			loop_pipe(x,y);
 			continue;
@@ -214,7 +214,7 @@ int main()
 		else
 		{
 			//Take care of I/O redirection :
-			int tt=0;
+			int tt=0; 
 			int k,l;
 			char* redir[100]; //Extra array to store just commands
 			l=0;

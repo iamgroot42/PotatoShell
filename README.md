@@ -7,6 +7,6 @@ Supports:
 - executables from /bin folder
 - Ctrl+C interrupt
 - cd command
-- 'exit' to exit gracefully from the shell.
-- 'history' (volatile)
-- single level pipelining (without any file I/O redirection in between or any 'cd') 
+- `exit` to exit gracefully from the shell.
+- `history` (volatile)
+- single level pipelining (without any file I/O redirection in between or any `cd`) 
